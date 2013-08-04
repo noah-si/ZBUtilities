@@ -7,11 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LNTextField.h"
 
-@interface LNTextValidate : NSObject
+typedef NS_ENUM(NSUInteger, ZBTextValidateType) {
+	ZBTextValidateTypeRequired,
+	ZBTextValidateTypeEmail,
+	ZBTextValidateTypePassword,
+	ZBTextValidateTypeUSZip,
+	ZBTextValidateTypeCustom
+};
 
-@property (nonatomic, assign) LNTextValidateType type;
+@interface ZBTextValidate : NSObject
+
+@property (nonatomic, assign) ZBTextValidateType type;
 @property (nonatomic, strong) NSPredicate *predicate;
 @property (nonatomic, strong) NSString *messageTitle;
 @property (nonatomic, strong) NSString *invalidMessage;
@@ -19,8 +26,8 @@
 - (BOOL)isValid:(NSString *)text invalidMessage:(NSString **)invalidMessage;
 - (BOOL)isValid:(NSString *)text messageTitle:(NSString **)messageTitle invalidMessage:(NSString **)invalidMessage;
 
-+ (id)textValidateWithType:(LNTextValidateType)type;
-+ (id)textValidateWithType:(LNTextValidateType)type invalidMessage:(NSString *)invalidMessage;
++ (id)textValidateWithType:(ZBTextValidateType)type;
++ (id)textValidateWithType:(ZBTextValidateType)type invalidMessage:(NSString *)invalidMessage;
 
 + (NSPredicate *)defaultRequiredPredicate;
 + (NSPredicate *)defaultEmailPredicate;
@@ -31,7 +38,7 @@
 
 #pragma mark - TEST
 
-@interface LNTextValidate(Test)
+@interface ZBTextValidate(Test)
 
 + (void)test;
 

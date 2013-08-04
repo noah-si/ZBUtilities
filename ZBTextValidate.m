@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ZoomBin. All rights reserved.
 //
 
-#import "LNTextValidate.h"
+#import "ZBTextValidate.h"
 
-@implementation LNTextValidate
+@implementation ZBTextValidate
 
 - (BOOL)isValid:(NSString *)text
 {
@@ -33,23 +33,23 @@
 	return isValid;
 }
 
-+ (id)textValidateWithType:(LNTextValidateType)type
++ (id)textValidateWithType:(ZBTextValidateType)type
 {
-	return [[LNTextValidate alloc] initWithType:type predicate:nil messageTitle:nil invalidMessage:nil];
+	return [[ZBTextValidate alloc] initWithType:type predicate:nil messageTitle:nil invalidMessage:nil];
 }
 
-+ (id)textValidateWithType:(LNTextValidateType)type invalidMessage:(NSString *)invalidMessage
++ (id)textValidateWithType:(ZBTextValidateType)type invalidMessage:(NSString *)invalidMessage
 {
-	return [[LNTextValidate alloc] initWithType:type predicate:nil messageTitle:nil invalidMessage:invalidMessage];
+	return [[ZBTextValidate alloc] initWithType:type predicate:nil messageTitle:nil invalidMessage:invalidMessage];
 }
 
-- (id)initWithType:(LNTextValidateType)type predicate:(NSPredicate *)predicate messageTitle:(NSString *)messageTitle invalidMessage:(NSString *)invalidMessage
+- (id)initWithType:(ZBTextValidateType)type predicate:(NSPredicate *)predicate messageTitle:(NSString *)messageTitle invalidMessage:(NSString *)invalidMessage
 {
 	self = [super init];
 	if (self) {
 		self.type = type;
 		
-		//must ranking as LNTextValidateType enum define
+		//must ranking as ZBTextValidateType enum define
 		NSArray *defaultPredicates = @[	[[self class] defaultRequiredPredicate],
 										[[self class] defaultEmailPredicate],
 										[[self class] defaultPasswordPredicate],
@@ -64,7 +64,6 @@
 		
 		self.predicate = predicate ? predicate : defaultPredicates[type];
 		self.invalidMessage = invalidMessage ? invalidMessage : defaultInvalidMessages[type];
-		NSAssert(self.predicate, @"Invalid CTTextField");
 	}
 	return self;
 }
@@ -108,14 +107,11 @@
 
 #pragma mark - TEST
 
-@implementation LNTextValidate(Test)
+@implementation ZBTextValidate(Test)
 
 + (void)test
 {
-//	LNTextValidate *validate = [LNTextValidate textValidateWithType:LNTextValidateTypeRequired];
-//	LNTextValidate *validate = [LNTextValidate textValidateWithType:LNTextValidateTypeEmail invalidMessage:@"wrong email"];
-//	LNTextValidate *validate = [LNTextValidate textValidateWithType:LNTextValidateTypePassword invalidMessage:@"invalid passwd"];
-	LNTextValidate *validate = [LNTextValidate textValidateWithType:LNTextValidateTypeUSZip invalidMessage:@"invalid us zip"];
+	ZBTextValidate *validate = [ZBTextValidate textValidateWithType:ZBTextValidateTypeUSZip invalidMessage:@"invalid us zip"];
 	validate.messageTitle = @"error";
 	NSArray *array = @[@"12382", @"123", @"ewq321.co", @"qwe12"];
 	for (NSString *text in array) {
