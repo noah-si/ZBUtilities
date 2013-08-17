@@ -10,7 +10,7 @@
 
 @implementation UIDevice (ZBUtilites)
 
-- (BOOL)is4Inch
++ (BOOL)is4Inch
 {
 	return ( [UIScreen mainScreen].bounds.size.height == 568 );
 }

@@ -10,6 +10,6 @@
 
 @interface UIDevice (ZBUtilites)
 
-- (BOOL)is4Inch;
++ (BOOL)is4Inch;
 
 @end
