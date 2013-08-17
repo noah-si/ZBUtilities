@@ -11,5 +11,7 @@
 @interface UIDevice (ZBUtilites)
 
 + (BOOL)is4Inch;
++ (CGFloat)heightOf4Inch;
++ (CGFloat)heightOf3dot5Inch;
 
 @end
