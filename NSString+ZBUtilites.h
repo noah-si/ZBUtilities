@@ -13,5 +13,6 @@
 + (NSString *)ChineseSpace;
 + (NSString *)dashLineWithLength:(NSUInteger)length;
 + (NSString *)dottedLineWithLength:(NSUInteger)length;
++ (NSString *)appStoreLinkWithAppID:(NSString *)appID;
 
 @end

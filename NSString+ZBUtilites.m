@@ -33,4 +33,9 @@
 	return line;
 }
 
++ (NSString *)appStoreLinkWithAppID:(NSString *)appID
+{
+	return [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@?mt=8", appID];
+}
+
 @end
