@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 ZoomBin. All rights reserved.
 //
 
-#import "NSNumber+ReadableDistance.h"
+#import "NSNumber+PrintableMeasurement.h"
 
 @implementation NSNumber (PrintableMeasurement)
 
