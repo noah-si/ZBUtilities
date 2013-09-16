@@ -10,6 +10,8 @@
 
 @interface NSNumber (PrintableMeasurement)
 
-- (NSString *)readableDistance;
+- (NSString *)printableDistance;
+
+- (NSString *)printableBytes;
 
 @end

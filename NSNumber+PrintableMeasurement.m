@@ -10,7 +10,7 @@
 
 @implementation NSNumber (PrintableMeasurement)
 
-- (NSString *)readableDistance
+- (NSString *)printableDistance
 {
 //	if (self.integerValue < 10) {
 //		return @"<10m";
@@ -27,4 +27,13 @@
 		return @"千里之外";
 }
 
+- (NSString *)printableBytes
+{
+	if (self.integerValue < 1024) {
+		return [NSString stringWithFormat:@"%dB", self.integerValue];
+	} else if (self.integerValue < 1024 * 1024) {
+		return [NSString stringWithFormat:@"%.1fM", self.floatValue / 1024];
+	} else
+		return [NSString stringWithFormat:@"%.1fG", self.floatValue / 1024 / 1024];
+}
 @end
