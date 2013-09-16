@@ -32,8 +32,10 @@
 	if (self.integerValue < 1024) {
 		return [NSString stringWithFormat:@"%dB", self.integerValue];
 	} else if (self.integerValue < 1024 * 1024) {
-		return [NSString stringWithFormat:@"%.1fM", self.floatValue / 1024];
+		return [NSString stringWithFormat:@"%.1fKB", self.floatValue / 1024];
+	} else if (self.integerValue < 1024 * 1024 * 1024) {
+		return [NSString stringWithFormat:@"%.1fMB", self.floatValue / 1024 / 1024];
 	} else
-		return [NSString stringWithFormat:@"%.1fG", self.floatValue / 1024 / 1024];
+		return [NSString stringWithFormat:@"%.1fGB", self.floatValue / 1024 / 1024 / 1024];
 }
 @end
