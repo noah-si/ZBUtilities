@@ -14,4 +14,6 @@
 
 - (NSString *)printableBytes;
 
+- (NSString *)printableTimestamp;
+
 @end
