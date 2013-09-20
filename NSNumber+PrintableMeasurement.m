@@ -24,8 +24,7 @@
 	} else if (self.integerValue < 1000000) {
 		return [NSString stringWithFormat:@"%.0fkm", self.floatValue / 1000];
 	} else {
-		static NSString *thousandsKilometersAway = @"千里之外";
-		return thousandsKilometersAway;
+		return @"千里之外";
 	}
 }
 
