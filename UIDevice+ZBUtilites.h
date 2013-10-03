@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#define UDID_1 @"064f18ddbfb8bd1492ce34752a787a9342843823"//BAO WEI KANG
+#define UDID_1 @"064f18ddbfb8bd1492ce34752a787a9342843823"//BAO
 #define UDID_2 @"dde8a7554922df46211850bef00a9c0ad14cc245"//BAO2
-#define UDID_3 @"3460767d19ed7b2f3cc5aa554f0c58761478c672"//BAo3
+#define UDID_3 @"3460767d19ed7b2f3cc5aa554f0c58761478c672"//BAO3
 #define UDID_4 @"44ef9f5838d0fd52cb5a7a52db702c55f7a730b4"//DaiYe
 #define UDID_5 @"fda6cea28b14cdf070e3992b12e37fb105f57c9d"//HuYangpin
 #define UDID_6 @"4a02cb9966d82cca182f2b0f51e7c01e27c20f10"//YanChao
