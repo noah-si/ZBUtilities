@@ -44,7 +44,7 @@
 {
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.doubleValue];
 	NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:date];
-	if (timeInterval < 60 * 60) {
+	if (timeInterval < 60 * 60) {//TODO: 中文，应该国际化
 		return [NSString stringWithFormat:@"%d分钟前", (NSInteger)(timeInterval / 60) + 1];
 	} else if (timeInterval < 60 * 60 * 24) {
 		return [NSString stringWithFormat:@"%d小时前", (NSInteger)(timeInterval / 60 / 60) + 1];
@@ -52,7 +52,10 @@
 		return [NSString stringWithFormat:@"%d天前", (NSInteger)(timeInterval / 60 / 60 / 24) + 1];
 	} else {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		NSLocale *currentLocale = [NSLocale currentLocale];
+		[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+		[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+		NSString *preferredLang = [[NSLocale preferredLanguages] objectAtIndex:0];
+		NSLocale *currentLocale = [[NSLocale alloc] initWithLocaleIdentifier:preferredLang];
 		[dateFormatter setLocale:currentLocale];
 		return [dateFormatter stringFromDate:date];
 	}
