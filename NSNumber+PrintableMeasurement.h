@@ -11,9 +11,11 @@
 @interface NSNumber (PrintableMeasurement)
 
 - (NSString *)printableDistance;
-
 - (NSString *)printableBytes;
-
 - (NSString *)printableTimestamp;
+- (NSString *)printableAge;
+- (NSString *)printableHeight;
+- (NSString *)printableWeight;
+- (NSString *)printableBust;
 
 @end

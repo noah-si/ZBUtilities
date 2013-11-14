@@ -61,4 +61,40 @@
 	}
 }
 
+- (NSString *)printableAge
+{
+	
+	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"岁"];
+}
+
+- (NSString *)printableHeight
+{
+	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"cm"];
+}
+
+- (NSString *)printableWeight
+{
+	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"kg"];
+}
+
+- (NSString *)printableBust;
+{
+	NSString *cup = @"A";
+	if (self.integerValue == 1) {
+		cup = @"B";
+	} else if (self.integerValue == 2) {
+		cup = @"C";
+	} else if (self.integerValue == 3) {
+		cup = @"D";
+	} else if (self.integerValue == 4) {
+		cup = @"E";
+	} else if (self.integerValue == 5) {
+		cup = @"F";
+	} else if (self.integerValue == 6) {
+		cup = @"G";
+	}
+	return [NSString stringWithFormat:@"%@%@", cup, @"罩杯"];
+}
+
+
 @end
