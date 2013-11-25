@@ -16,6 +16,6 @@
 - (NSString *)printableAge;
 - (NSString *)printableHeight;
 - (NSString *)printableWeight;
-- (NSString *)printableBust;
+- (NSString *)printableChest;
 
 @end

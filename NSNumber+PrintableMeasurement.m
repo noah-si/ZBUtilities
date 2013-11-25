@@ -77,7 +77,7 @@
 	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"kg"];
 }
 
-- (NSString *)printableBust;
+- (NSString *)printableChest;
 {
 	NSString *cup = @"A";
 	if (self.integerValue == 1) {
