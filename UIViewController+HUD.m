@@ -93,24 +93,15 @@
 
 - (void)displayHUDError:(NSString *)title message:(NSString *)message
 {
-	MBProgressHUD *hud = [self HUD];
-	hud.square = NO;
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHUD:)];
-	[hud addGestureRecognizer:tap];
-	hud.mode = MBProgressHUDModeText;
-	NSDictionary *conf = [[hud class] configuration];
-	BOOL uppercase = [conf[HUDAttributeUppercase] boolValue];
-	if (uppercase) {
-		hud.labelText = NSLocalizedString(title, nil).uppercaseString;
-		hud.detailsLabelText = NSLocalizedString(message, nil).uppercaseString;
-	} else {
-		hud.labelText = NSLocalizedString(title, nil);
-		hud.detailsLabelText = NSLocalizedString(message, nil);
-	}
-	[hud hide:YES afterDelay:3];
+	[self displayHUDTitle:title message:message];
 }
 
 - (void)displayHUDTitle:(NSString *)title message:(NSString *)message
+{
+	[self displayHUDTitle:title message:message duration:3];
+}
+
+- (void)displayHUDTitle:(NSString *)title message:(NSString *)message duration:(CGFloat)duration
 {
 	MBProgressHUD *hud = [self HUD];
 	hud.square = NO;
@@ -126,7 +117,7 @@
 		hud.labelText = NSLocalizedString(title, nil);
 		hud.detailsLabelText = NSLocalizedString(message, nil);
 	}
-	[hud hide:YES afterDelay:3];
+	[hud hide:YES afterDelay:duration];
 }
 
 
