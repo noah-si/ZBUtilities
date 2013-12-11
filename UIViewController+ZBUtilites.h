@@ -11,6 +11,7 @@
 @interface UIViewController (ZBUtilites)
 
 - (void)setLeftBarButtonItemAsBackButton;
+- (void)setLeftBarButtonItemAsBackButtonToRoot;
 - (void)backOrClose;
 - (void)setRightBarButtonItemAsSaveButtonWithSelector:(SEL)selector;
 

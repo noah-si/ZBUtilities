@@ -15,6 +15,11 @@
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(backOrClose)];
 }
 
+- (void)setLeftBarButtonItemAsBackButtonToRoot
+{
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(backOrCloseToRoot)];
+}
+
 - (void)setRightBarButtonItemAsSaveButtonWithSelector:(SEL)selector
 {
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:selector];
@@ -24,6 +29,15 @@
 {
 	if (self.navigationController.viewControllers[0] != self) {
 		[self.navigationController popViewControllerAnimated:YES];
+	} else if (self.navigationController.presentingViewController) {
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
+}
+
+- (void)backOrCloseToRoot
+{
+	if (self.navigationController.viewControllers[0] != self) {
+		[self.navigationController popToRootViewControllerAnimated:YES];
 	} else if (self.navigationController.presentingViewController) {
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}
