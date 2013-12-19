@@ -10,7 +10,7 @@
 
 @implementation NSString (ZBUtilites)
 
-- (BOOL)allCharactersAreSpace;
+- (BOOL)areAllCharactersSpace;
 {
 	return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0;
 }
