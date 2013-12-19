@@ -10,6 +10,11 @@
 
 @implementation NSString (ZBUtilites)
 
+- (BOOL)allCharactersAreSpace;
+{
+	return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0;
+}
+
 + (NSString *)ChineseSpace
 {
 	return @"　";
