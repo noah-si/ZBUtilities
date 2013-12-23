@@ -104,5 +104,9 @@
 	return [NSString stringWithFormat:@"%@%@", cup, @"罩杯"];
 }
 
+- (NSString *)printableRMB
+{
+	return [NSString stringWithFormat:@"%.2f元", self.floatValue];
+}
 
 @end
