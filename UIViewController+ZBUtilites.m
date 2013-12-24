@@ -25,6 +25,11 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:selector];
 }
 
+- (void)setRightBarButtonItemAsSendButtonWithSelector:(SEL)selector
+{
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send", nil) style:UIBarButtonItemStylePlain target:self action:selector];
+}
+
 - (void)backOrClose
 {
 	if (self.navigationController.viewControllers[0] != self) {
