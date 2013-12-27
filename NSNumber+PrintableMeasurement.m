@@ -64,7 +64,7 @@
 - (NSString *)printableAge
 {
 	if (self.integerValue == 0) {
-		return NSLocalizedString(@"Unassigned", nil);
+		return NSLocalizedString(@"未设置", nil);
 	}
 	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"岁"];
 }
@@ -72,7 +72,7 @@
 - (NSString *)printableHeight
 {
 	if (self.integerValue == 0) {
-		return NSLocalizedString(@"Unassigned", nil);
+		return NSLocalizedString(@"未设置", nil);
 	}
 	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"cm"];
 }
@@ -80,7 +80,7 @@
 - (NSString *)printableWeight
 {
 	if (self.integerValue == 0) {
-		return NSLocalizedString(@"Unassigned", nil);
+		return NSLocalizedString(@"未设置", nil);
 	}
 	return [NSString stringWithFormat:@"%d%@", self.integerValue, @"kg"];
 }
