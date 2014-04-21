@@ -10,6 +10,7 @@
 
 @interface NSString (ZBUtilites)
 
+- (BOOL)areAllCharactersSpace;
 + (NSString *)ChineseSpace;
 + (NSString *)dashLineWithLength:(NSUInteger)length;
 + (NSString *)dottedLineWithLength:(NSUInteger)length;

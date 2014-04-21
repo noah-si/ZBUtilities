@@ -17,5 +17,6 @@
 - (NSString *)printableHeight;
 - (NSString *)printableWeight;
 - (NSString *)printableChest;
+- (NSString *)printableRMB;
 
 @end
