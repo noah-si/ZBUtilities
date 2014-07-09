@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.4"
   s.summary      = "ZBUtilities for Zoombin."
   s.homepage     = "https://github.com/qq30135878/ZBUtilities"
-  s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Bin Zhang" => "30135878@qq.com" }
   s.platform     = :ios, "5.0"
   s.source       = { :git => "https://github.com/qq30135878/ZBUtilities.git", :tag => "0.0.4" }
