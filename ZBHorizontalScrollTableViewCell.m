@@ -12,16 +12,16 @@
 
 @interface ZBHorizontalScrollTableViewCell () <UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, assign) NSUInteger currentPage;
-@property (nonatomic, strong) NSArray *contentViews;
+@property (readwrite) UIScrollView *scrollView;
+@property (readwrite) NSUInteger currentPage;
+@property (readwrite) NSArray *contentViews;
+@property (readwrite) NSTimer *timer;
 
 @end
 
 @implementation ZBHorizontalScrollTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 		_scrollView = [[UIScrollView alloc] init];
@@ -33,18 +33,16 @@
     return self;
 }
 
-- (void)setAutoScrollEnabled:(BOOL)autoScrollEnabled
-{
+- (void)setAutoScrollEnabled:(BOOL)autoScrollEnabled {
 	if (_autoScrollEnabled == autoScrollEnabled) return;
 	_autoScrollEnabled = autoScrollEnabled;
 	if (_autoScrollEnabled) {
 		_scrollView.pagingEnabled = YES;
-		[self performSelector:@selector(scrollToNext) withObject:nil afterDelay:kAutoScrollTimeInterval];
+		[self startAutoScrollTimer];
 	}
 }
 
-- (void)reloadData
-{
+- (void)reloadData {
 	CGFloat height = [_delegate heightForCell:self inSection:_section];
 	CGRect frame = self.bounds;
 	frame.size.height = height;
@@ -67,8 +65,7 @@
 	_scrollView.contentSize = CGSizeMake(contentWidth, height);
 }
 
-- (void)scrollToNext
-{
+- (void)scrollToNext {
 	_currentPage++;
 	NSInteger numberOfColumns = [_delegate numberOfColumnsForCell:self inSection:_section];
 	if (_currentPage > numberOfColumns - 1) {
@@ -77,20 +74,29 @@
 	} else {
 		[_scrollView setContentOffset:CGPointMake(_currentPage * _scrollView.frame.size.width, 0) animated:YES];
 	}
-	[self performSelector:@selector(scrollToNext) withObject:nil afterDelay:kAutoScrollTimeInterval];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+
+- (void)startAutoScrollTimer {
+	_timer = [NSTimer timerWithTimeInterval:kAutoScrollTimeInterval target:self selector:@selector(scrollToNext) userInfo:nil repeats:NO];
+	[_timer performSelector:@selector(fire) withObject:nil afterDelay:kAutoScrollTimeInterval];
 }
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	CGFloat pageWidth = _scrollView.frame.size.width;
 	_currentPage = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	if (_timer) {
+		[_timer invalidate];
+		[self startAutoScrollTimer];
+	}
 }
 
 @end
