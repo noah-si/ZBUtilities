@@ -8,6 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSObject (NotNull)
+
+- (instancetype)notNull;
+
+@end
+
+@implementation NSObject (NotNull)
+
+- (instancetype)notNull {
+	return self;
+}
+
+@end
+
+@implementation NSNull (NotNull)
+
+- (instancetype)notNull {
+	return nil;
+}
+
+@end
+
 @interface ZBModel : NSObject
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
