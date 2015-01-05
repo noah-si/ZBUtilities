@@ -11,6 +11,8 @@
 
 @interface UITableViewCell (ZBUtilities)
 
++ (UITableViewCellStyle)style;
 + (NSString *)identifier;
++ (CGFloat)height;
 
 @end

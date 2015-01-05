@@ -10,8 +10,16 @@
 
 @implementation UITableViewCell (ZBUtilities)
 
++ (UITableViewCellStyle)style {
+	return UITableViewCellStyleDefault;
+}
+
 + (NSString *)identifier {
 	return NSStringFromClass(self);
+}
+
++ (CGFloat)height {
+	return [[[UITableView alloc] init] rowHeight];
 }
 
 @end
