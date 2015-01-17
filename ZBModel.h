@@ -39,5 +39,6 @@
 + (NSString *)archivePath;
 + (instancetype)unarchive;
 - (void)archive;
+- (void)destroy;
 
 @end

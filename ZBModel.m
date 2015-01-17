@@ -37,12 +37,16 @@
 	return archivePath;
 }
 
++ (instancetype)unarchive {
+	return [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];
+}
+
 - (void)archive {
 	[NSKeyedArchiver archiveRootObject:self toFile:[[self class] archivePath]];
 }
 
-+ (instancetype)unarchive {
-	return [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];
+- (void)destroy {
+	[[NSFileManager defaultManager] removeItemAtPath:[[self class] archivePath] error:nil];
 }
 
 @end
