@@ -8,7 +8,7 @@
 
 #import "ZBBottomIndexView.h"
 
-static CGFloat const heightForIndex = 2;
+static CGFloat const heightForIndex = 1;
 
 @interface ZBBottomIndexView ()
 
@@ -22,6 +22,10 @@ static CGFloat const heightForIndex = 2;
 - (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
+		UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - heightForIndex, frame.size.width, heightForIndex)];
+		line.backgroundColor = [UIColor lightGrayColor];
+		[self addSubview:line];
+		
 		_indexView = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - heightForIndex, frame.size.width, heightForIndex)];
 		[self addSubview:_indexView];
 		_titleColor = [UIColor blackColor];
@@ -58,6 +62,7 @@ static CGFloat const heightForIndex = 2;
 			NSString *title = _items[i];
 			[button setTitle:title forState:UIControlStateNormal];
 			[button setTitleColor:_titleColor forState:UIControlStateNormal];
+			button.backgroundColor = [UIColor whiteColor];
 			[button setTitleColor:_titleColorSelected forState:UIControlStateSelected];
 			button.titleLabel.font = _font;
 			[button addTarget:self action:@selector(selected:) forControlEvents:UIControlEventTouchUpInside];
@@ -107,6 +112,11 @@ static CGFloat const heightForIndex = 2;
 	if (_buttons.count < selectedIndex) {
 		return;
 	}
+	
+	for	(UIButton *button in _buttons) {
+		button.selected = NO;
+	}
+	
 	_selectedIndex = selectedIndex;
 	CGRect frame = _indexView.frame;
 	UIButton *button = _buttons[selectedIndex];
