@@ -24,4 +24,8 @@
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, assign) NSInteger selectedIndex;
 
+- (void)swipe:(UISwipeGestureRecognizer *)swipe;
+- (UISwipeGestureRecognizer *)leftSwipeGestureRecognizer;
+- (UISwipeGestureRecognizer *)rightSwipeGestureRecognizer;
+
 @end

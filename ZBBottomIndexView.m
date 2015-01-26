@@ -131,4 +131,31 @@ static CGFloat const heightForIndex = 1;
 	}
 }
 
+- (void)swipe:(UISwipeGestureRecognizer *)swipe {
+	NSInteger index = _selectedIndex;
+	if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+		index++;
+		if (index < _items.count) {
+			[self setSelectedIndex:index];
+		}
+	} else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+		index--;
+		if (index >= 0) {
+			[self setSelectedIndex:index];
+		}
+	}
+}
+
+- (UISwipeGestureRecognizer *)leftSwipeGestureRecognizer {
+	UISwipeGestureRecognizer *left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+	left.direction = UISwipeGestureRecognizerDirectionLeft;
+	return left;
+}
+
+- (UISwipeGestureRecognizer *)rightSwipeGestureRecognizer {
+	UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+	right.direction = UISwipeGestureRecognizerDirectionRight;
+	return right;
+}
+
 @end
