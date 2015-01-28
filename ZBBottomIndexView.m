@@ -47,6 +47,7 @@ static CGFloat const heightForIndex = 1;
 		CGRect frame = _indexView.frame;
 		frame.size.width = width;
 		_indexView.frame = frame;
+		_indexView.hidden = _hiddenIndexView;
 		CGFloat height = self.bounds.size.height - heightForIndex;
 		
 		frame.origin.x = 0;
@@ -129,6 +130,11 @@ static CGFloat const heightForIndex = 1;
 	if (_delegate) {
 		[_delegate bottomIndexViewSelected:_selectedIndex];
 	}
+}
+
+- (void)setHiddenIndexView:(BOOL)hiddenIndexView {
+	_hiddenIndexView = hiddenIndexView;
+	_indexView.hidden = _hiddenIndexView;
 }
 
 - (void)swipe:(UISwipeGestureRecognizer *)swipe {

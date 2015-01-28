@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UIColor *titleColorSelected;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) BOOL hiddenIndexView;
 
 - (void)swipe:(UISwipeGestureRecognizer *)swipe;
 - (UISwipeGestureRecognizer *)leftSwipeGestureRecognizer;
