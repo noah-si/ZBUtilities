@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSString (ZBUtilites)
 
+- (BOOL)stringContainsString:(NSString *)aString;
 - (BOOL)areAllCharactersSpace;
 + (NSString *)ChineseSpace;
 + (NSString *)dashLineWithLength:(NSUInteger)length;
