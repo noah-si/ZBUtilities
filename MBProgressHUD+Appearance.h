@@ -5,7 +5,7 @@
 //  Copyright (c) 2012 Log(n) LLC. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+@import MBProgressHUD;
 
 extern NSString * const HUDAttributeSquare;
 extern NSString * const HUDAttributeUppercase;
